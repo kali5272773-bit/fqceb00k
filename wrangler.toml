@@ -1,0 +1,8 @@
+name = "faceb00k-private"
+main = "worker.js"
+compatibility_date = "2026-08-18"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "faceb00k-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
