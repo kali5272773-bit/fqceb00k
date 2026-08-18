@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FaceB00k — Social Space</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a href="login.html" style="margin-left:auto;color:#635bff;font-weight:700;text-decoration:none">Login</a>
+  <div class="brand"><div class="logo">F</div><span>FaceB00k</span></div>
+  <div class="search">🔍 <input id="search" placeholder="Search FaceB00k"></div>
+  <nav class="desktop-nav">
+    <button class="active">🏠</button><button>👥</button><button>🎬</button><button>🔔</button><button>👤</button>
+  </nav>
+</header>
+
+<main class="layout">
+  <aside class="sidebar card">
+    <div class="profile-mini"><div class="avatar">F</div><div><b>Faizan</b><small>@faizan</small></div></div>
+    <a>🏠 Home</a><a>👥 Friends</a><a>🎬 Videos</a><a>🔥 Trending</a><a>💬 Messenger</a><a>⚙️ Settings</a>
+  </aside>
+
+  <section class="feed">
+    <div class="stories card">
+      <h3>Stories</h3>
+      <div class="story-row">
+        <div class="story add">＋<span>Create story</span></div>
+        <div class="story"><div class="story-pic">A</div><span>Ali</span></div>
+        <div class="story"><div class="story-pic">S</div><span>Sarah</span></div>
+        <div class="story"><div class="story-pic">H</div><span>Hamza</span></div>
+        <div class="story"><div class="story-pic">M</div><span>Maham</span></div>
+      </div>
+    </div>
+
+    <div class="composer card">
+      <div class="profile-mini"><div class="avatar">F</div><input id="postInput" placeholder="What's on your mind?"></div>
+      <div class="composer-actions"><button>📷 Photo</button><button>🎬 Video</button><button>😊 Feeling</button><button id="postBtn">Post</button></div>
+    </div>
+
+    <article class="post card">
+      <div class="post-head"><div class="avatar">A</div><div><b>Ali Khan</b><small>2h · 🌐</small></div><button class="more">•••</button></div>
+      <p>Building something exciting today! 🚀 What do you think about the new social experience?</p>
+      <div class="post-media">✨</div>
+      <div class="stats"><span>👍 128</span><span>42 comments · 12 shares</span></div>
+      <div class="post-actions"><button>👍 Like</button><button>❤️ Love</button><button>😂 Funny</button><button>💬 Comment</button><button>↗️ Share</button></div>
+      <div class="comment-box"><input placeholder="Write a comment..."><button>Send</button></div>
+    </article>
+
+    <article class="post card">
+      <div class="post-head"><div class="avatar">S</div><div><b>Sarah Ahmed</b><small>5h · 🌐</small></div><button class="more">•••</button></div>
+      <p>Quick coding tip: break a big problem into smaller pieces. 💻✨</p>
+      <div class="post-media code">console.log("Hello, world!");</div>
+      <div class="stats"><span>❤️ 86</span><span>19 comments</span></div>
+      <div class="post-actions"><button>👍 Like</button><button>❤️ Love</button><button>😂 Funny</button><button>💬 Comment</button><button>↗️ Share</button></div>
+    </article>
+  </section>
+
+  <aside class="rightbar">
+    <div class="card"><h3>🔥 Trending</h3><p>#AIRevolution</p><p>#CodingLife</p><p>#TechPakistan</p><p>#StudentLife</p></div>
+    <div class="card"><h3>🟢 Online</h3><div class="online">🟢 Ali Khan</div><div class="online">🟢 Sarah Ahmed</div><div class="online">🟢 Hamza</div></div>
+  </aside>
+</main>
+
+<div class="chat"><div class="chat-head">💬 Messenger <span>🟢</span></div><div class="chat-body">Hi! Welcome to FaceB00k 👋</div><div class="chat-input"><input placeholder="Message...">➤</div></div>
+
+<nav class="mobile-nav"><button>🏠<small>Home</small></button><button>👥<small>Friends</small></button><button>🎬<small>Videos</small></button><button>🔔<small>Alerts</small></button><button>👤<small>Profile</small></button></nav>
+<script src="script.js"></script>
+</body>
+</html>
