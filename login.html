@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Login — FaceB00k</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body.login-page{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#eef4ff,#f8fbff);padding:24px}
+.login-wrap{width:min(1050px,100%);display:grid;grid-template-columns:1fr 430px;gap:60px;align-items:center}
+.login-brand h1{font-size:58px;margin:0 0 12px;background:linear-gradient(135deg,#635bff,#008cff);-webkit-background-clip:text;color:transparent}
+.login-brand h2{font-size:30px;margin:0 0 28px;max-width:520px}
+.login-brand p{font-size:18px;color:#69758b;max-width:520px;line-height:1.6}
+.feature{display:flex;gap:12px;align-items:center;margin:18px 0;color:#455168}
+.feature-icon{width:42px;height:42px;border-radius:13px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 20px #26324b12}
+.login-card{background:#fff;border:1px solid #e2e7f0;border-radius:22px;padding:28px;box-shadow:0 20px 55px #27345118}
+.login-card h2{text-align:center;margin:0 0 7px}.login-card .sub{text-align:center;color:#8a94a7;margin-bottom:22px}
+.login-card input{width:100%;padding:14px;border:1px solid #dce1ea;border-radius:12px;margin:7px 0;outline:0;font-size:15px}.login-card input:focus{border-color:#635bff}
+.login-btn{width:100%;padding:14px;border:0;border-radius:12px;background:linear-gradient(135deg,#635bff,#008cff);color:#fff;font-size:16px;font-weight:800;margin:10px 0;cursor:pointer}
+.remember{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#69758b;margin:8px 0 12px}.remember a{color:#635bff;font-weight:700;cursor:pointer}
+.divider{display:flex;align-items:center;gap:10px;color:#9aa3b2;font-size:13px;margin:17px 0}.divider:before,.divider:after{content:"";height:1px;background:#e6e9ef;flex:1}
+.google{width:100%;padding:12px;border:1px solid #dce1ea;background:#fff;border-radius:12px;font-weight:700;cursor:pointer}
+.signup{text-align:center;margin-top:20px;color:#69758b;font-size:14px}.signup a{color:#635bff;font-weight:800;text-decoration:none}
+@media(max-width:800px){.login-wrap{grid-template-columns:1fr;gap:20px;max-width:480px}.login-brand{text-align:center}.login-brand h1{font-size:44px}.login-brand h2{font-size:23px}.feature{display:none}}
+</style>
+</head>
+<body class="login-page">
+<div class="login-wrap">
+<section class="login-brand">
+  <div class="logo">F</div>
+  <h1>FaceB00k</h1>
+  <h2>Connect with friends and the world around you.</h2>
+  <p>A modern social space for sharing moments, watching videos, discovering trends and staying connected.</p>
+  <div class="feature"><div class="feature-icon">👥</div><div><b>Friends & Updates</b><br>See what your community is sharing.</div></div>
+  <div class="feature"><div class="feature-icon">🎬</div><div><b>Videos & Reels</b><br>Discover short and trending content.</div></div>
+  <div class="feature"><div class="feature-icon">💬</div><div><b>Messenger</b><br>Chat with your friends instantly.</div></div>
+</section>
+
+<section class="login-card">
+  <h2>Log in to FaceB00k</h2>
+  <div class="sub">Welcome back! Please login to continue.</div>
+  <form id="loginForm">
+    <input type="text" id="email" placeholder="Email or phone number" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <div class="remember"><label><input type="checkbox" style="width:auto;margin:0 6px 0 0"> Remember me</label><a>Forgot password?</a></div>
+    <button class="login-btn" type="submit">Log In</button>
+  </form>
+  <div class="divider">or</div>
+  <button class="google">🌈 Continue with Google</button>
+  <div class="signup">Don't have an account? <a href="signup.html">Sign up</a></div>
+</section>
+</div>
+<script>
+const API_BASE = localStorage.getItem('FACEB00K_API') || 'YOUR_CLOUDFLARE_WORKER_URL';
+document.getElementById('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const btn=document.querySelector('.login-btn'); btn.textContent='Logging in...'; btn.disabled=true;
+ try{
+   const r=await fetch(API_BASE+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({email:document.getElementById('email').value,password:document.getElementById('password').value})});
+   const d=await r.json();
+   if(!r.ok) throw new Error(d.error||'Login failed');
+   localStorage.setItem('faceb00k_user',JSON.stringify(d.user));
+   window.location.href='index.html';
+ }catch(err){alert(err.message);btn.textContent='Log In';btn.disabled=false;}
+});
+</script>
+</body>
+</html>
