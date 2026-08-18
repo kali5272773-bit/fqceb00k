@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Sign Up — FaceB00k</title><link rel="stylesheet" href="style.css"></head>
+<body class="login-page"><section class="login-card" style="width:min(470px,100%)"><div class="brand" style="justify-content:center"><div class="logo">F</div><span>FaceB00k</span></div><h2 style="margin-top:20px">Create an account</h2><div class="sub">It's quick and easy.</div><form id="signupForm"><input placeholder="First name" required><input placeholder="Last name" required><input type="email" placeholder="Mobile number or email" required><input type="password" placeholder="New password" required><label style="font-size:13px;color:#69758b">Date of birth</label><div style="display:flex;gap:7px"><input placeholder="Day"><input placeholder="Month"><input placeholder="Year"></div><label style="font-size:13px;color:#69758b">Gender</label><div style="display:flex;gap:8px;margin:8px 0"><button type="button" class="google">○ Male</button><button type="button" class="google">○ Female</button></div><button class="login-btn">Sign Up</button></form><div class="signup">Already have an account? <a href="login.html">Log in</a></div></section><script>
+const API_BASE = localStorage.getItem('FACEB00K_API') || 'YOUR_CLOUDFLARE_WORKER_URL';
+document.getElementById('signupForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const inputs=e.target.querySelectorAll('input');
+ const btn=e.target.querySelector('.login-btn'); btn.textContent='Creating...'; btn.disabled=true;
+ try{
+   const r=await fetch(API_BASE+'/api/signup',{method:'POST',headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({name:(inputs[0].value+' '+inputs[1].value).trim(),email:inputs[2].value,password:inputs[3].value})});
+   const d=await r.json();
+   if(!r.ok) throw new Error(d.error||'Signup failed');
+   localStorage.setItem('faceb00k_user',JSON.stringify(d.user));
+   window.location.href='index.html';
+ }catch(err){alert(err.message);btn.textContent='Sign Up';btn.disabled=false;}
+});
+</script></body></html>
