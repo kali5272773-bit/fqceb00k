@@ -1,8 +1,8 @@
-name = "faceb00k-private"
+name = "fqceb00k"
 main = "worker.js"
 compatibility_date = "2026-08-18"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "faceb00k-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "fafbd7a8-07ac-4b78-bbea-073211c61b53"
